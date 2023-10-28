@@ -1,0 +1,51 @@
+ body {
+            background-color: #c0ffba; /* Verde claro */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333; /* Cor do título */
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        fieldset {
+            border: 2px solid #333; /* Cor da borda */
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #333; /* Cor da borda dos campos */
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #333; /* Cor do botão de envio */
+            color: #fff; /* Cor do texto do botão de envio */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }

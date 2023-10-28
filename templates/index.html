@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Impostos do Simples Nacional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Calculadora de Impostos do Simples Nacional</h1>
+
+    <form action="/" method="POST">
+        <fieldset>
+            <legend>Escolha um anexo</legend>
+            <label for="anexo">Selecione qual Anexo deseja:</label>
+            <select id="anexo" name="anexo">
+                <option value="1">Anexo I</option>
+                <option value="2">Anexo II</option>
+                <option value="3">Anexo III</option>
+                <option value="4">Anexo IV</option>
+                <option value="5">Anexo V</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Receita Bruta Acumulada dos últimos 12 meses</legend>
+            <label for="rbt12">Informe a Receita Bruta Acumulada dos últimos 12 meses:</label>
+            <input type="text" id="rbt12" name="rbt12">
+        </fieldset>
+
+        <fieldset>
+            <legend>Receita Mensal</legend>
+            <label for="receita_mensal">Informe a Receita Mensal:</label>
+            <input type="text" id="receita_mensal" name="receita_mensal">
+        </fieldset>
+
+        <input type="submit" value="Calcular Impostos">
+    </form>
+
+    {% if resultado %}
+    <div class="resultado">
+        <h2>Resultado do cálculo:</h2>
+        <p>Anexo: {{ resultado.anexo }}</p>
+        <p>Receita Bruta Acumulada: {{ resultado.rbt12 }}</p>
+        <p>Aliquota Efetiva: {{ resultado['aliquota_efetiva'] }}</p>
+        <p>Receita Mensal: {{ resultado.receita_mensal }}</p>
+        <p>Imposto DAS: R$ {{ resultado.imposto_das }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
