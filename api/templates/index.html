@@ -3,6 +3,10 @@
 <head>
     <title>HP12C SN</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
 </head>
 <body>
      <img src="{{ url_for('static', filename='images/simbolo-simp-01.png') }}" alt="logo_company">
@@ -14,25 +18,26 @@
         <fieldset>
             <legend>Escolha um anexo</legend>
             <label for="anexo">Selecione qual Anexo deseja:</label>
-            <select id="anexo" name="anexo">
-                <option value="1">Anexo I</option>
-                <option value="2">Anexo II</option>
-                <option value="3">Anexo III</option>
-                <option value="4">Anexo IV</option>
-                <option value="5">Anexo V</option>
+            <select id="anexo" name="anexo" required>
+                <option value="" disabled selected hidden> Selecione um Anexo</option>
+                <option value="1">Anexo I - (Comércio)</option>
+                <option value="2">Anexo II - (Indústria)</option>
+                <option value="3">Anexo III - (Serviço)</option>
+                <option value="4">Anexo IV - (Serviço)</option>
+                <option value="5">Anexo V - (Serviço)</option>
             </select>
         </fieldset>
 
         <fieldset>
             <legend>Receita Bruta Acumulada dos últimos 12 meses</legend>
             <label for="rbt12">Informe a RBT12:</label>
-            <input type="text" id="rbt12" name="rbt12">
+            <input type="text" id="rbt12" name="rbt12" placeholder="Ex: 180.000,00" required>
         </fieldset>
 
         <fieldset>
             <legend>Receita Mensal</legend>
             <label for="receita_mensal">Informe a Receita Mensal:</label>
-            <input type="text" id="receita_mensal" name="receita_mensal">
+            <input type="text" id="receita_mensal" name="receita_mensal" placeholder="Ex: 15.000,00" required>
         </fieldset>
 
         <input type="submit" value="Calcular Impostos">
@@ -44,13 +49,19 @@
     <div class="resultado">
         <h2>Resultado do cálculo:</h2>
         <p>Anexo: {{ resultado.anexo }}</p>
-        <p>Receita Bruta Acumulada: R$ {{ "%.2f"|format(resultado.rbt12) }}</p>
-        <p>Aliquota Efetiva: {{ (resultado['aliquota_efetiva'] * 100)|round(2) }}%</p>
-        <p>Receita Mensal: R$ {{ "%.2f"|format(resultado.receita_mensal) }}</p>
-        <p>Imposto DAS: R$ {{ "%.2f"|format(resultado.imposto_das) }}</p>
+        <p><b>Receita Bruta Acumulada:</b> R$ {{ "%.2f"|format(resultado.rbt12) }}</p>
+        <p><b>Aliquota Efetiva:</b> {{ (resultado['aliquota_efetiva'] * 100)|round(2) }}%</p>
+        <p><b>Receita Mensal:</b> R$ {{ "%.2f"|format(resultado.receita_mensal) }}</p>
+        <p><b>Imposto DAS:</b> R$ {{ "%.2f"|format(resultado.imposto_das) }}</p>
     </div>
     {% endif %}
 
+    <script>
+        $(document).ready(function(){
+            $('#rbt12').mask('000.000.000,00', {reverse: true});
+            $('#receita_mensal').mask('000.000.000,00', {reverse: true});
+        });
+    </script>
 
 </body>
 </html>
