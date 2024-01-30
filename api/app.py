@@ -1,13 +1,6 @@
 from flask import Flask, render_template, request
-# from babel.numbers import format_currency
-# import locale
 
 app = Flask(__name__)
-
-# locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-#
-# def formatar_real(valor):
-#     return format_currency(valor, 'BRL', locale='pt_BR')
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -30,7 +23,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
         'receita_mensal': receita_mensal,
         'imposto_das': 0.0
     }
-# ANEXO I -  COMERCIO
+# ANEXO I -  COMÉRCIO
     if anexo == 1:
         if rbt12 > 0 and rbt12 <= 180000:
             aliq_efet = 0.04
@@ -110,6 +103,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
         elif rbt12 > 3600000 and rbt12 <= 4800000:
             aliq_efet = (rbt12 * 0.33 - 828000) / rbt12
         resultado['imposto_das'] = receita_mensal * aliq_efet
+        resultado['aliquota_efetiva'] = aliq_efet
 
         print("Anexo IV - Alíquota Efetiva:", aliq_efet)
         print("Anexo IV - Imposto DAS: {:.2f}".format(resultado['imposto_das']))
@@ -128,6 +122,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
         elif rbt12 > 3600000 and rbt12 <= 4800000:
             aliq_efet = (rbt12 * 0.305 - 540000) / rbt12
         resultado['imposto_das'] = receita_mensal * aliq_efet
+        resultado['aliquota_efetiva'] = aliq_efet
 
         print("Anexo V - Alíquota Efetiva:", aliq_efet)
         print("Anexo V - Imposto DAS: {:.2f}".format(resultado['imposto_das']))

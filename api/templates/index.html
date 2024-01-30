@@ -43,18 +43,16 @@
         <input type="submit" value="Calcular Impostos">
     </form>
 
-
-
-    {% if resultado %}
-    <div class="resultado">
-        <h2>Resultado do cálculo:</h2>
-        <p>Anexo: {{ resultado.anexo }}</p>
-        <p><b>Receita Bruta Acumulada:</b> R$ {{ "%.2f"|format(resultado.rbt12) }}</p>
-        <p><b>Aliquota Efetiva:</b> {{ (resultado['aliquota_efetiva'] * 100)|round(2) }}%</p>
-        <p><b>Receita Mensal:</b> R$ {{ "%.2f"|format(resultado.receita_mensal) }}</p>
-        <p><b>Imposto DAS:</b> R$ {{ "%.2f"|format(resultado.imposto_das) }}</p>
-    </div>
-    {% endif %}
+         {% if resultado %}
+              <div class="resultado">
+                <h2>Resultado do cálculo:</h2>
+                <p><b>Anexo:</b> {{ resultado.anexo }}</p>
+                <p><b>Receita Bruta Acumulada:</b> R$ {{ '{:,.2f}'.format(resultado.rbt12|round(2)|float).replace(',', '|').replace('.', ',').replace('|', '.') }}</p>
+                <p><b>Aliquota Efetiva:</b> {{ (resultado['aliquota_efetiva'] * 100)|round(2) }}%</p>
+                <p><b>Receita Mensal:</b> R$ {{ '{:,.2f}'.format(resultado.receita_mensal|round(2)|float).replace(',', '|').replace('.', ',').replace('|', '.') }}</p>
+                <p><b>Imposto DAS:</b> R$ {{ '{:,.2f}'.format(resultado.imposto_das|round(2)|float).replace(',', '|').replace('.', ',').replace('|', '.') }}</p>
+              </div>
+         {% endif %}
 
     <script>
         $(document).ready(function(){
