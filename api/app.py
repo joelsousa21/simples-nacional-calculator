@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request
-from babel.numbers import format_currency
-import locale
+# from babel.numbers import format_currency
+# import locale
 
 app = Flask(__name__)
 
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-
-def formatar_real(valor):
-    return format_currency(valor, 'BRL', locale='pt_BR')
+# locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+#
+# def formatar_real(valor):
+#     return format_currency(valor, 'BRL', locale='pt_BR')
 
 @app.route("/", methods=["GET", "POST"])
 def index():
