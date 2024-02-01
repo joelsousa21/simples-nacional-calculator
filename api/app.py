@@ -35,7 +35,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
             aliq_efet = (rbt12 * 0.107 - 22500) / rbt12
         elif rbt12 > 1800000 and rbt12 <= 3600000:
             aliq_efet = (rbt12 * 0.143 - 87300) / rbt12
-        elif rbt12 > 3600000 and rbt12 <= 4800000:
+        elif rbt12 > 3600000: # and rbt12 <= 4800000:
             calc_iss = ((rbt12 * 0.19 - 378000) / rbt12) * 0.335
             iss_excedente = calc_iss * receita_mensal
             aliq_efet = ((rbt12 * 0.33 - 648000) / rbt12) + calc_iss
@@ -57,7 +57,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
             aliq_efet = (rbt12 * 0.112 - 22500) / rbt12
         elif rbt12 > 1800000 and rbt12 <= 3600000:
             aliq_efet = (rbt12 * 0.147 - 85500) / rbt12
-        elif rbt12 > 3600000 and rbt12 <= 4800000:
+        elif rbt12 > 3600000: # and rbt12 <= 4800000:
             calc_iss = ((rbt12 * 0.21 - 125640) / rbt12) * 0.335
             iss_excedente = calc_iss * receita_mensal
             aliq_efet = ((rbt12 * 0.33 - 648000) / rbt12) + calc_iss
@@ -79,7 +79,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
             aliq_efet = (rbt12 * 0.16 - 35640) / rbt12
         elif rbt12 > 1800000 and rbt12 <= 3600000:
             aliq_efet = (rbt12 * 0.21 - 125640) / rbt12
-        elif rbt12 > 3600000 and rbt12 <= 4800000:
+        elif rbt12 > 3600000: #and rbt12 <= 4800000:
             calc_iss = ((rbt12 * 0.21 - 125640) / rbt12) * 0.335
             iss_excedente = calc_iss * receita_mensal
             aliq_efet = ((rbt12 * 0.33 - 648000) / rbt12) + calc_iss
@@ -100,7 +100,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
             aliq_efet = (rbt12 * 0.14 - 39780) / rbt12
         elif rbt12 > 1800000 and rbt12 <= 3600000:
             aliq_efet = (rbt12 * 0.22 - 183780) / rbt12
-        elif rbt12 > 3600000 and rbt12 <= 4800000:
+        elif rbt12 > 3600000: # and rbt12 <= 4800000:
             aliq_efet = (rbt12 * 0.33 - 828000) / rbt12
         resultado['imposto_das'] = receita_mensal * aliq_efet
         resultado['aliquota_efetiva'] = aliq_efet
@@ -119,7 +119,7 @@ def calcular_impostos(anexo, rbt12, receita_mensal):
             aliq_efet = (rbt12 * 0.205 - 17100) / rbt12
         elif rbt12 > 1800000 and rbt12 <= 3600000:
             aliq_efet = (rbt12 * 0.23 - 62100) / rbt12
-        elif rbt12 > 3600000 and rbt12 <= 4800000:
+        elif rbt12 > 3600000: # and rbt12 <= 4800000:
             aliq_efet = (rbt12 * 0.305 - 540000) / rbt12
         resultado['imposto_das'] = receita_mensal * aliq_efet
         resultado['aliquota_efetiva'] = aliq_efet
